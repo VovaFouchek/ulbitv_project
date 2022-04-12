@@ -2,6 +2,7 @@ import React, { useState, useRef, useMemo } from "react";
 import PostFilter from "./components/PostFilter";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
+import MyButton from "./components/UI/button/MyButton";
 import MyModal from "./components/UI/MyModal/MyModal";
 import './styles/App.css'
 
@@ -13,6 +14,7 @@ function App() {
   ])
 
   const [filter, setFilter] = useState({ sort: '', query: '' })
+  const [modal, setModal] = useState(false);
 
   const sortedPosts = useMemo(() => {
     console.log('Отаработала функция сортировки');
@@ -28,6 +30,7 @@ function App() {
 
   const CreatePost = (newPost) => {
     setPosts([...posts, newPost])
+    setModal(false)
   }
 
   const removePost = (post) => {
@@ -36,8 +39,10 @@ function App() {
 
   return (
     <div className="App">
-      <MyModal></MyModal>
-      <PostForm create={CreatePost} />
+      <MyButton style={{ marginTop: 30 }} onClick={() => setModal(true)}>Создать пользователя</MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
+        <PostForm create={CreatePost} />
+      </MyModal>
       <hr style={{ margin: '15px 0' }} />
       <PostFilter
         filter={filter}
