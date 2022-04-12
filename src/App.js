@@ -13,9 +13,9 @@ function App() {
   const [selectedSort, setSelectedSort] = useState('')
 
   const [posts, setPosts] = useState([
-    { id: 1, title: 'Javascript', body: 'Description' },
-    { id: 2, title: 'Javascript 2', body: 'Description' },
-    { id: 3, title: 'Javascript 3', body: 'Description' },
+    { id: 1, title: 'Java', body: 'This is a Java' },
+    { id: 2, title: 'C#', body: 'Some text' },
+    { id: 3, title: 'Python', body: 'DataBase' },
   ])
 
   const CreatePost = (newPost) => {
@@ -28,7 +28,7 @@ function App() {
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
-    console.log(sort);
+    setPosts([...posts].sort((a, b) => a[sort].localeCompare(b[sort])))
   }
 
   return (
