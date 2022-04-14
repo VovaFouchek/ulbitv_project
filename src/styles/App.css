@@ -1,22 +1,41 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#root{
+
+#root {
     display: flex;
     justify-content: center;
 }
 
-.App{
+.App {
     width: 800px;
 }
 
-.post{
+.post {
     display: flex;
     padding: 15px;
     border: 2px solid teal;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+}
+
+.post-enter {
+    transform: translateX(-350px);
+}
+
+.post-enter-active {
+    transform: translateX(0);
+    transition: all 500ms ease-in;
+}
+
+.post-exit {
+    opacity: 1;
+}
+
+.post-exit-active {
+    transform: translateX(-350px);
+    transition: all 500ms ease-in;
 }
